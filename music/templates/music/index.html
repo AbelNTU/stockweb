@@ -1,0 +1,10 @@
+{% if all_albums %}
+  <h2>專輯列表</h2>
+  <ul>
+    {% for album in all_albums %}
+    <li><a href="/music/{{ album.id }}/">{{ album.album_title }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <h2>還沒有加入專輯喔～</h2>
+{% endif %}
