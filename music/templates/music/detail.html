@@ -1,2 +1,25 @@
-{{ album }}<br>
-{{ artist }}
+<img src="{{ album.album_logo }}">
+
+<h1>{{ album.album_title }}</h1>
+<h3>{{ artist }}</h3>
+
+<ul>
+  {% for song in album.song_set.all %}
+  <li>{{ song.song_title }} -- {{ song.file_type }}</li>
+  {% endfor %}
+</ul>
+<h2>題目列表</h2>
+{% if latest_question_list %}
+  <ul>
+  {% for question in latest_question_list %}
+      <li><a href="/music/{{ album.id }}/results_{{ question.id }}/">{{ question.question_text }}</a></li>
+        {% for choice in question.choice_set.all %}
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+        {% endfor %}
+  {% endfor %}
+  </ul>
+  <input type="submit" value="Vote" />
+{% else %}
+  <p>No polls are available.</p>
+{% endif %}
