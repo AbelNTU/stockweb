@@ -1,5 +1,11 @@
-<img src="{{ album.album_logo }}">
+{% load static %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}" />
+{% if album.id == 1  %}
+<img src="{% static 'music/images/picture_0.jpg' %}">
+{% else %}
+<img src="{% static 'music/images/picture_1.jpg' %}">
+{% endif %}
 <h1>{{ album.album_title }}</h1>
 <h3>{{ artist }}</h3>
 
@@ -18,10 +24,12 @@
         {% for choice in question.choice_set.all %}
         <input type="radio" name="choice"  value="{{ choice.id }}" />{{ choice.choice_text }}
         {% endfor %}
+        <input type="submit" value="Vote" />
         </form>
   {% endfor %}
   </ul>
-  <input type="submit" value="Vote" />
+
+
 {% else %}
   <p>No polls are available.</p>
 {% endif %}

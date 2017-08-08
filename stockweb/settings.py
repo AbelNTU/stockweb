@@ -31,13 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'statistic.apps.StatisticConfig',
     'music.apps.MusicConfig',
+    'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -56,7 +59,7 @@ ROOT_URLCONF = 'stockweb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['music/templates'],
+        'DIRS': ['music/templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
